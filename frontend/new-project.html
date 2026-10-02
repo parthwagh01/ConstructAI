@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>New Project — ConstructAI</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body class="new-project-page">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="dashboard-sidebar">
+
+        <div class="sidebar-top">
+
+            <a
+                href="dashboard.html"
+                class="brand"
+            >
+
+                <div class="brand-mark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="brand-text">
+                    <strong>Construct</strong><span>AI</span>
+                </div>
+
+            </a>
+
+
+            <div class="workspace-label">
+
+                <span>WORKSPACE</span>
+
+                <strong>
+                    Construction Intelligence
+                </strong>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="dashboard.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">⌂</span>
+                    <span>Overview</span>
+                </a>
+
+
+                <a
+                    href="new-project.html"
+                    class="sidebar-link active"
+                >
+                    <span class="sidebar-icon">+</span>
+                    <span>New project</span>
+                </a>
+
+
+                <a
+                    href="dashboard.html#projectsContainer"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">□</span>
+                    <span>Projects</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar-link disabled-link"
+                    onclick="return false;"
+                >
+                    <span class="sidebar-icon">◫</span>
+                    <span>Reports</span>
+                    <small>Soon</small>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar-link disabled-link"
+                    onclick="return false;"
+                >
+                    <span class="sidebar-icon">◌</span>
+                    <span>Analytics</span>
+                    <small>Soon</small>
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Estimation engine</strong>
+                    <small>Operational</small>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="sidebar-user"
+                data-logout
+            >
+
+                <div class="user-avatar">
+                    <span data-user-name>U</span>
+                </div>
+
+                <div class="user-info">
+
+                    <strong data-user-name>
+                        User
+                    </strong>
+
+                    <small data-user-email>
+                        Account
+                    </small>
+
+                </div>
+
+                <span class="logout-arrow">↗</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="new-project-main">
+
+
+        <!-- PAGE HEADER -->
+
+        <header class="project-page-header">
+
+            <div>
+
+                <a
+                    href="dashboard.html"
+                    class="back-link"
+                >
+                    ← Back to dashboard
+                </a>
+
+                <span class="page-kicker">
+                    PROJECT SETUP
+                </span>
+
+                <h1>
+                    Create a new project
+                </h1>
+
+                <p>
+                    Enter your project parameters to
+                    generate a construction cost and
+                    material estimate.
+                </p>
+
+            </div>
+
+
+            <div class="header-engine-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>
+                        Estimation engine
+                    </strong>
+
+                    <small>
+                        Ready to calculate
+                    </small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PROGRESS -->
+
+        <div class="setup-progress">
+
+            <div class="progress-step active">
+
+                <span>01</span>
+
+                <div>
+                    <strong>
+                        Project details
+                    </strong>
+
+                    <small>
+                        Basic information
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="progress-line"></div>
+
+
+            <div class="progress-step">
+
+                <span>02</span>
+
+                <div>
+                    <strong>
+                        Estimate
+                    </strong>
+
+                    <small>
+                        Cost & materials
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <form
+            id="projectForm"
+            class="project-form"
+        >
+
+
+            <!-- =========================
+                 BASIC INFORMATION
+            ========================== -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <span class="form-kicker">
+                            BASIC INFORMATION
+                        </span>
+
+                        <h2>
+                            Tell us about your project
+                        </h2>
+
+                        <p>
+                            Start with the basic details
+                            of the construction project.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- Project Name -->
+
+                    <div class="input-group full">
+
+                        <label for="projectName">
+                            Project name
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="projectName"
+                            placeholder="e.g. Modern Villa"
+                            required
+                        >
+
+                        <small>
+                            Give your project a recognizable name.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Construction Type -->
+
+                    <div class="input-group">
+
+                        <label for="constructionType">
+                            Construction type
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="constructionType"
+                            required
+                        >
+
+                            <option value="">
+                                Select construction type
+                            </option>
+
+                            <option value="residential">
+                                Residential
+                            </option>
+
+                            <option value="commercial">
+                                Commercial
+                            </option>
+
+                            <option value="industrial">
+                                Industrial
+                            </option>
+
+                            <option value="institutional">
+                                Institutional
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Location -->
+
+                    <div class="input-group">
+
+                        <label for="location">
+                            Project location
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="e.g. Pune"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- State -->
+
+                    <div class="input-group">
+
+                        <label for="state">
+                            State
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="state"
+                            placeholder="e.g. Maharashtra"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 PROJECT SIZE
+            ========================== -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <span class="form-kicker">
+                            PROJECT SIZE
+                        </span>
+
+                        <h2>
+                            Define the scale
+                        </h2>
+
+                        <p>
+                            These values help calculate the
+                            required construction resources.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group">
+
+                        <label for="builtUpArea">
+                            Built-up area
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <input
+                                type="number"
+                                id="builtUpArea"
+                                min="1"
+                                placeholder="2000"
+                                required
+                            >
+
+                            <span>
+                                SQ.FT
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="floors">
+                            Number of floors
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="floors"
+                            min="1"
+                            placeholder="2"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="rooms">
+                            Number of rooms
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="rooms"
+                            min="1"
+                            placeholder="5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="duration">
+                            Construction duration
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-with-unit">
+
+                            <input
+                                type="number"
+                                id="duration"
+                                min="1"
+                                placeholder="12"
+                                required
+                            >
+
+                            <span>
+                                MONTHS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 QUALITY
+            ========================== -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <span class="form-kicker">
+                            PROJECT QUALITY
+                        </span>
+
+                        <h2>
+                            Select construction quality
+                        </h2>
+
+                        <p>
+                            Quality level affects the estimated
+                            construction rate.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quality-options">
+
+
+                    <label class="quality-option">
+
+                        <input
+                            type="radio"
+                            name="quality"
+                            value="standard"
+                            checked
+                        >
+
+                        <div class="quality-box">
+
+                            <div class="quality-top">
+
+                                <strong>
+                                    Standard
+                                </strong>
+
+                                <span>
+                                    ₹
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Practical materials and
+                                standard specifications.
+                            </p>
+
+                            <small>
+                                Balanced option
+                            </small>
+
+                        </div>
+
+                    </label>
+
+
+
+                    <label class="quality-option">
+
+                        <input
+                            type="radio"
+                            name="quality"
+                            value="premium"
+                        >
+
+                        <div class="quality-box">
+
+                            <div class="quality-top">
+
+                                <strong>
+                                    Premium
+                                </strong>
+
+                                <span>
+                                    ₹₹
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Better finishes and
+                                upgraded materials.
+                            </p>
+
+                            <small>
+                                Enhanced specifications
+                            </small>
+
+                        </div>
+
+                    </label>
+
+
+
+                    <label class="quality-option">
+
+                        <input
+                            type="radio"
+                            name="quality"
+                            value="luxury"
+                        >
+
+                        <div class="quality-box">
+
+                            <div class="quality-top">
+
+                                <strong>
+                                    Luxury
+                                </strong>
+
+                                <span>
+                                    ₹₹₹
+                                </span>
+
+                            </div>
+
+                            <p>
+                                High-end finishes and
+                                premium specifications.
+                            </p>
+
+                            <small>
+                                High specification
+                            </small>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 STRUCTURE & MATERIAL
+            ========================== -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="card-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <span class="form-kicker">
+                            STRUCTURE & MATERIAL
+                        </span>
+
+                        <h2>
+                            Construction specifications
+                        </h2>
+
+                        <p>
+                            Select the structural and material
+                            preferences for your project.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group">
+
+                        <label for="structure">
+                            Structure type
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="structure"
+                            required
+                        >
+
+                            <option value="">
+                                Select structure
+                            </option>
+
+                            <option value="RCC">
+                                RCC
+                            </option>
+
+                            <option value="Steel">
+                                Steel
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="materialGrade">
+                            Material grade
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="materialGrade"
+                            required
+                        >
+
+                            <option value="">
+                                Select material grade
+                            </option>
+
+                            <option value="standard">
+                                Standard
+                            </option>
+
+                            <option value="premium">
+                                Premium
+                            </option>
+
+                            <option value="luxury">
+                                Luxury
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="projectMessage"
+                class="form-message"
+            ></div>
+
+
+
+            <!-- =========================
+                 SUBMIT
+            ========================== -->
+
+            <div class="form-submit-area">
+
+                <div class="submit-info">
+
+                    <span class="submit-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Ready to estimate
+                        </strong>
+
+                        <small>
+                            Your inputs will be processed
+                            by the estimation engine.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="generate-btn"
+                >
+
+                    <span>
+                        Generate estimate
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="project-footer">
+
+            <span>
+                ConstructAI · Construction Intelligence
+            </span>
+
+            <span>
+                Planning estimation system
+            </span>
+
+        </footer>
+
+    </main>
+
+
+
+    <!-- =========================
+         PAGE STYLING
+    ========================== -->
+
+    <style>
+
+        /* ======================================
+           PAGE
+        ====================================== */
+
+        .new-project-page {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 75% 0%,
+                    rgba(199,243,106,0.035),
+                    transparent 30%
+                ),
+                var(--bg);
+        }
+
+
+        .new-project-main {
+            min-height: 100vh;
+
+            margin-left: 255px;
+
+            padding:
+                45px 55px 70px;
+
+            max-width: 1450px;
+        }
+
+
+        /* ======================================
+           HEADER
+        ====================================== */
+
+        .project-page-header {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 35px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .back-link {
+            display: inline-block;
+
+            margin-bottom: 22px;
+
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+
+        .page-kicker {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: var(--accent);
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.8px;
+        }
+
+
+        .project-page-header h1 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 38px;
+
+            line-height: 1.05;
+
+            letter-spacing: -1.8px;
+        }
+
+
+        .project-page-header p {
+            max-width: 670px;
+
+            margin-top: 12px;
+
+            color: var(--text-muted);
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        .header-engine-status {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                12px 15px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.015);
+
+            white-space: nowrap;
+        }
+
+
+        .header-engine-status strong {
+            display: block;
+
+            color: var(--text-soft);
+
+            font-size: 9px;
+        }
+
+
+        .header-engine-status small {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #555d57;
+
+            font-size: 7px;
+        }
+
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: var(--accent);
+
+            box-shadow:
+                0 0 12px
+                rgba(199,243,106,0.65);
+        }
+
+
+        /* ======================================
+           PROGRESS
+        ====================================== */
+
+        .setup-progress {
+            display: flex;
+
+            align-items: center;
+
+            max-width: 650px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .progress-step {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #555d57;
+        }
+
+
+        .progress-step > span {
+            width: 29px;
+            height: 29px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            font-size: 8px;
+
+            font-weight: 800;
+        }
+
+
+        .progress-step.active {
+            color: var(--text-soft);
+        }
+
+
+        .progress-step.active > span {
+            border-color:
+                rgba(199,243,106,0.3);
+
+            background:
+                rgba(199,243,106,0.07);
+
+            color: var(--accent);
+        }
+
+
+        .progress-step strong {
+            display: block;
+
+            font-size: 9px;
+        }
+
+
+        .progress-step small {
+            display: block;
+
+            margin-top: 2px;
+
+            color: #555d57;
+
+            font-size: 7px;
+        }
+
+
+        .progress-line {
+            width: 90px;
+            height: 1px;
+
+            margin: 0 15px;
+
+            background: var(--border);
+        }
+
+
+        /* ======================================
+           FORM CARD
+        ====================================== */
+
+        .project-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+
+        .form-card {
+            padding: 28px 30px 32px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.018),
+                    rgba(255,255,255,0.006)
+                );
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.08);
+        }
+
+
+        .form-card-header {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .card-number {
+            width: 31px;
+            height: 31px;
+
+            display: grid;
+
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border: 1px solid
+                rgba(199,243,106,0.18);
+
+            border-radius: 8px;
+
+            background:
+                rgba(199,243,106,0.055);
+
+            color: var(--accent);
+
+            font-size: 8px;
+
+            font-weight: 800;
+        }
+
+
+        .form-kicker {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #555d57;
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.3px;
+        }
+
+
+        .form-card h2 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 19px;
+
+            letter-spacing: -0.6px;
+        }
+
+
+        .form-card-header p {
+            margin-top: 5px;
+
+            color: #555d57;
+
+            font-size: 9px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ======================================
+           INPUT GRID
+        ====================================== */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 21px;
+        }
+
+
+        .input-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .input-group.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .input-group label {
+            color: var(--text-soft);
+
+            font-size: 9px;
+
+            font-weight: 600;
+        }
+
+
+        .input-group label span {
+            color: var(--accent);
+        }
+
+
+        .input-group input,
+        .input-group select {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding:
+                0 14px;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 9px;
+
+            outline: none;
+
+            background:
+                rgba(0,0,0,0.18);
+
+            color: var(--text);
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 10px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .input-group input::placeholder {
+            color: #4d554f;
+        }
+
+
+        .input-group input:hover,
+        .input-group select:hover {
+            border-color:
+                rgba(255,255,255,0.15);
+        }
+
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color:
+                rgba(199,243,106,0.45);
+
+            background:
+                rgba(199,243,106,0.025);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(199,243,106,0.045);
+        }
+
+
+        .input-group select {
+            cursor: pointer;
+
+            appearance: auto;
+        }
+
+
+        .input-group select option {
+            background: #111511;
+
+            color: white;
+        }
+
+
+        .input-group > small {
+            color: #4e5650;
+
+            font-size: 7px;
+        }
+
+
+        /* ======================================
+           INPUT UNIT
+        ====================================== */
+
+        .input-with-unit {
+            position: relative;
+        }
+
+
+        .input-with-unit input {
+            padding-right: 80px;
+        }
+
+
+        .input-with-unit > span {
+            position: absolute;
+
+            top: 50%;
+            right: 14px;
+
+            transform: translateY(-50%);
+
+            color: #555d57;
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.8px;
+
+            pointer-events: none;
+        }
+
+
+        /* ======================================
+           QUALITY
+        ====================================== */
+
+        .quality-options {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .quality-option {
+            position: relative;
+
+            cursor: pointer;
+        }
+
+
+        .quality-option input {
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        .quality-box {
+            min-height: 150px;
+
+            padding: 18px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            background:
+                rgba(0,0,0,0.12);
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .quality-option:hover .quality-box {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(255,255,255,0.15);
+        }
+
+
+        .quality-option input:checked
+        + .quality-box {
+
+            border-color:
+                rgba(199,243,106,0.45);
+
+            background:
+                rgba(199,243,106,0.055);
+
+            box-shadow:
+                inset 0 0 0 1px
+                rgba(199,243,106,0.04);
+        }
+
+
+        .quality-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .quality-top strong {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 14px;
+        }
+
+
+        .quality-top span {
+            color: var(--accent);
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+
+        .quality-box p {
+            margin-top: 15px;
+
+            color: #686f69;
+
+            font-size: 8px;
+
+            line-height: 1.7;
+        }
+
+
+        .quality-box small {
+            display: inline-block;
+
+            margin-top: 17px;
+
+            padding:
+                5px 7px;
+
+            border-radius: 5px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color: #555d57;
+
+            font-size: 6px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .quality-option input:checked
+        + .quality-box small {
+
+            background:
+                rgba(199,243,106,0.09);
+
+            color: var(--accent);
+        }
+
+
+        /* ======================================
+           MESSAGE
+        ====================================== */
+
+        .form-message {
+            display: none;
+
+            padding: 13px 15px;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 9px;
+
+            font-size: 9px;
+        }
+
+
+        .form-message.show {
+            display: block;
+        }
+
+
+        .form-message.error {
+            border-color:
+                rgba(255,90,90,0.25);
+
+            background:
+                rgba(255,90,90,0.05);
+
+            color: #ff8d8d;
+        }
+
+
+        .form-message.success {
+            border-color:
+                rgba(199,243,106,0.25);
+
+            background:
+                rgba(199,243,106,0.05);
+
+            color: var(--accent);
+        }
+
+
+        /* ======================================
+           SUBMIT AREA
+        ====================================== */
+
+        .form-submit-area {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px 22px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,0.012);
+        }
+
+
+        .submit-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .submit-icon {
+            width: 31px;
+            height: 31px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 8px;
+
+            background:
+                rgba(199,243,106,0.08);
+
+            color: var(--accent);
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        .submit-info strong {
+            display: block;
+
+            color: var(--text-soft);
+
+            font-size: 9px;
+        }
+
+
+        .submit-info small {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #555d57;
+
+            font-size: 7px;
+        }
+
+
+        .generate-btn {
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            padding: 0 17px 0 20px;
+
+            border: 0;
+
+            border-radius: 9px;
+
+            background: var(--accent);
+
+            color: #10130f;
+
+            cursor: pointer;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .generate-btn strong {
+            font-size: 15px;
+        }
+
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(199,243,106,0.15);
+        }
+
+
+        .generate-btn:disabled {
+            opacity: 0.55;
+
+            cursor: not-allowed;
+
+            transform: none;
+
+            box-shadow: none;
+        }
+
+
+        /* ======================================
+           FOOTER
+        ====================================== */
+
+        .project-footer {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-top: 40px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid var(--border);
+
+            color: #4e5650;
+
+            font-size: 7px;
+        }
+
+
+        /* ======================================
+           RESPONSIVE
+        ====================================== */
+
+        @media (max-width: 1100px) {
+
+            .new-project-main {
+                margin-left: 220px;
+
+                padding-inline: 30px;
+            }
+
+            .quality-options {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .dashboard-sidebar {
+                position: relative;
+
+                width: 100%;
+                height: auto;
+
+                padding: 17px;
+
+                border-right: 0;
+
+                border-bottom: 1px solid var(--border);
+            }
+
+            .workspace-label,
+            .sidebar-nav,
+            .sidebar-status {
+                display: none;
+            }
+
+            .sidebar-bottom {
+                position: absolute;
+
+                top: 12px;
+                right: 17px;
+
+                width: auto;
+            }
+
+            .user-info,
+            .logout-arrow {
+                display: none;
+            }
+
+            .sidebar-user {
+                width: auto;
+            }
+
+            .new-project-main {
+                margin-left: 0;
+
+                padding:
+                    30px 20px 60px;
+            }
+
+            .project-page-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group.full {
+                grid-column: auto;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .project-page-header h1 {
+                font-size: 30px;
+            }
+
+            .form-card {
+                padding: 22px 18px 24px;
+            }
+
+            .form-submit-area {
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+            .generate-btn {
+                width: 100%;
+
+                justify-content: space-between;
+            }
+
+            .setup-progress {
+                width: 100%;
+            }
+
+            .progress-line {
+                width: 35px;
+
+                margin-inline: 8px;
+            }
+
+            .project-footer {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+
+
+
+    <!-- APP JS -->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

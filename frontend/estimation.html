@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard — ConstructAI</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #070a08;
+            color: #f4f7f3;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            width: 78px;
+            height: 100vh;
+
+            background: #0b0f0c;
+
+            border-right:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 22px 10px;
+
+            z-index: 100;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 12px;
+
+            background: #c6ff4a;
+
+            color: #071006;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: "Manrope", sans-serif;
+
+            font-weight: 800;
+            font-size: 17px;
+
+            margin-bottom: 35px;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .nav-item {
+            position: relative;
+
+            width: 56px;
+            height: 52px;
+
+            margin: auto;
+
+            border-radius: 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #687269;
+
+            font-size: 19px;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #c6ff4a;
+
+            background:
+                rgba(198,255,74,0.08);
+        }
+
+        .nav-item::after {
+            content: attr(data-tooltip);
+
+            position: absolute;
+
+            left: 66px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            background: #171c18;
+
+            color: #dce2da;
+
+            padding: 7px 10px;
+
+            border-radius: 7px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            font-size: 11px;
+
+            white-space: nowrap;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: 0.2s;
+        }
+
+        .nav-item:hover::after {
+            opacity: 1;
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+            margin-left: 78px;
+
+            min-height: 100vh;
+
+            padding: 34px 5vw 70px;
+        }
+
+        .container {
+            max-width: 1450px;
+            margin: auto;
+        }
+
+        /* =====================================================
+           TOP BAR
+        ===================================================== */
+
+        .topbar {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 45px;
+        }
+
+        .welcome {
+            color: #7e897e;
+
+            font-size: 13px;
+        }
+
+        .welcome strong {
+            color: #e5ebe3;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 8px 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.025);
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+
+            border-radius: 50%;
+
+            background: #c6ff4a;
+
+            color: #071006;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .user-name {
+            color: #b9c2b7;
+
+            font-size: 12px;
+        }
+
+        .logout {
+            border: none;
+
+            background: transparent;
+
+            color: #687269;
+
+            cursor: pointer;
+
+            font-size: 12px;
+        }
+
+        .logout:hover {
+            color: #c6ff4a;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .page-header {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            margin-bottom: 30px;
+        }
+
+        .kicker {
+            color: #c6ff4a;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.7px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 {
+            font-family: "Manrope", sans-serif;
+
+            font-size:
+                clamp(38px, 5vw, 58px);
+
+            line-height: 1;
+
+            letter-spacing: -2.5px;
+
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: #7f897f;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            max-width: 650px;
+        }
+
+        .new-project-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            min-height: 48px;
+
+            padding: 0 18px;
+
+            border-radius: 10px;
+
+            background: #c6ff4a;
+
+            color: #071006;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+
+            transition: 0.2s;
+        }
+
+        .new-project-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(198,255,74,0.13);
+        }
+
+        /* =====================================================
+           STAT CARDS
+        ===================================================== */
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            min-height: 145px;
+
+            padding: 22px;
+
+            border-radius: 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            background:
+                rgba(255,255,255,0.025);
+        }
+
+        .stat-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 22px;
+        }
+
+        .stat-label {
+            color: #687269;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .stat-icon {
+            width: 29px;
+            height: 29px;
+
+            border-radius: 8px;
+
+            background:
+                rgba(198,255,74,0.08);
+
+            color: #c6ff4a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 13px;
+        }
+
+        .stat-value {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 29px;
+
+            letter-spacing: -1px;
+        }
+
+        .stat-sub {
+            color: #687269;
+
+            font-size: 10px;
+
+            margin-top: 6px;
+        }
+
+        /* =====================================================
+           QUICK ACTION
+        ===================================================== */
+
+        .quick-card {
+            display: grid;
+
+            grid-template-columns:
+                1fr auto;
+
+            align-items: center;
+
+            gap: 25px;
+
+            padding: 25px 28px;
+
+            margin-bottom: 24px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    rgba(198,255,74,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(198,255,74,0.12);
+        }
+
+        .quick-card h2 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 21px;
+
+            margin-bottom: 6px;
+        }
+
+        .quick-card p {
+            color: #788277;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        .quick-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 16px;
+
+            border-radius: 9px;
+
+            background:
+                rgba(198,255,74,0.10);
+
+            color: #c6ff4a;
+
+            border:
+                1px solid
+                rgba(198,255,74,0.18);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           PROJECT SECTION
+        ===================================================== */
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 22px;
+        }
+
+        .project-count {
+            color: #687269;
+
+            font-size: 11px;
+        }
+
+        .project-toolbar {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 14px;
+        }
+
+        .search-box {
+            flex: 1;
+
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+
+            height: 45px;
+
+            padding: 0 15px;
+
+            border-radius: 9px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            color: #e9eee7;
+
+            outline: none;
+
+            font-size: 12px;
+        }
+
+        .search-box input:focus {
+            border-color:
+                rgba(198,255,74,0.35);
+        }
+
+        .search-box input::placeholder {
+            color: #5f695f;
+        }
+
+        /* =====================================================
+           PROJECT LIST
+        ===================================================== */
+
+        .projects-container {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .project-row {
+            display: grid;
+
+            grid-template-columns:
+                1.5fr
+                0.8fr
+                0.7fr
+                0.7fr
+                auto;
+
+            align-items: center;
+
+            gap: 20px;
+
+            min-height: 83px;
+
+            padding: 15px 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.065);
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,255,255,0.018);
+
+            transition: 0.2s;
+        }
+
+        .project-row:hover {
+            background:
+                rgba(255,255,255,0.035);
+
+            border-color:
+                rgba(198,255,74,0.13);
+        }
+
+        .project-main {
+            min-width: 0;
+        }
+
+        .project-name {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            margin-bottom: 5px;
+        }
+
+        .project-location {
+            color: #697369;
+
+            font-size: 10px;
+        }
+
+        .project-field span {
+            display: block;
+
+            color: #5f695f;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.7px;
+
+            margin-bottom: 5px;
+        }
+
+        .project-field strong {
+            color: #aeb7ac;
+
+            font-size: 12px;
+        }
+
+        .quality-pill {
+            display: inline-flex;
+
+            padding: 5px 8px;
+
+            border-radius: 6px;
+
+            background:
+                rgba(198,255,74,0.07);
+
+            color: #b9ca9d;
+
+            font-size: 10px;
+        }
+
+        .project-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+        .view-btn,
+        .delete-btn {
+            height: 34px;
+
+            padding: 0 10px;
+
+            border-radius: 7px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            color: #9ba59a;
+
+            font-size: 10px;
+
+            cursor: pointer;
+        }
+
+        .view-btn:hover {
+            color: #c6ff4a;
+
+            border-color:
+                rgba(198,255,74,0.2);
+        }
+
+        .delete-btn:hover {
+            color: #ff9292;
+
+            border-color:
+                rgba(255,100,100,0.2);
+        }
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            display: none;
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+            border:
+                1px dashed
+                rgba(255,255,255,0.10);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.015);
+        }
+
+        .empty-icon {
+            width: 54px;
+            height: 54px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(198,255,74,0.08);
+
+            color: #c6ff4a;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+        }
+
+        .empty-state h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 19px;
+
+            margin-bottom: 7px;
+        }
+
+        .empty-state p {
+            color: #697369;
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .empty-button {
+            display: inline-flex;
+
+            padding: 11px 16px;
+
+            border-radius: 9px;
+
+            background: #c6ff4a;
+
+            color: #071006;
+
+            font-size: 12px;
+
+            font-weight: 800;
+        }
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading {
+            padding: 40px;
+
+            text-align: center;
+
+            color: #697369;
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error-message {
+            display: none;
+
+            padding: 13px 15px;
+
+            margin-bottom: 18px;
+
+            border-radius: 10px;
+
+            color: #ff9d9d;
+
+            background:
+                rgba(255,70,70,0.05);
+
+            border:
+                1px solid
+                rgba(255,100,100,0.15);
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .project-row {
+                grid-template-columns:
+                    1.5fr
+                    0.8fr
+                    0.8fr
+                    auto;
+            }
+
+            .project-row
+            .project-field:nth-child(4) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                width: 62px;
+            }
+
+            .main {
+                margin-left: 62px;
+
+                padding:
+                    25px 16px 50px;
+            }
+
+            .page-header {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .topbar {
+                margin-bottom: 30px;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-card {
+                grid-template-columns: 1fr;
+            }
+
+            .project-toolbar {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .project-row {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+
+                padding: 18px;
+            }
+
+            .project-row
+            .project-field:nth-child(4) {
+                display: block;
+            }
+
+            .project-actions {
+                justify-content: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================== -->
+
+<aside class="sidebar">
+
+
+    <a
+        href="dashboard.html"
+        class="logo"
+    >
+        CA
+    </a>
+
+
+    <nav class="sidebar-nav">
+
+
+        <a
+            href="dashboard.html"
+            class="nav-item active"
+            data-tooltip="Dashboard"
+        >
+            ⌂
+        </a>
+
+
+        <a
+            href="new-project.html"
+            class="nav-item"
+            data-tooltip="New Project"
+        >
+            +
+        </a>
+
+
+        <a
+            href="#projects"
+            class="nav-item"
+            data-tooltip="Projects"
+        >
+            ◫
+        </a>
+
+
+        <a
+            href="#"
+            class="nav-item"
+            data-tooltip="Reports"
+        >
+            ▤
+        </a>
+
+
+        <a
+            href="#"
+            class="nav-item"
+            data-tooltip="Analytics"
+        >
+            ◌
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="#"
+            class="nav-item"
+            data-tooltip="Settings"
+        >
+            ⚙
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main class="main">
+
+<div class="container">
+
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <div class="welcome">
+
+            Welcome back,
+            <strong id="welcomeName">
+                User
+            </strong>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <div class="user-pill">
+
+                <div
+                    class="avatar"
+                    id="userAvatar"
+                >
+                    U
+                </div>
+
+                <span
+                    class="user-name"
+                    id="userEmail"
+                >
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <button
+                class="logout"
+                id="logoutButton"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- HEADER -->
+
+    <section class="page-header">
+
+        <div>
+
+            <div class="kicker">
+                CONSTRUCTAI WORKSPACE
+            </div>
+
+            <h1>
+                Project dashboard
+            </h1>
+
+            <p>
+                Manage your construction projects,
+                review estimates and keep your project
+                planning information organized.
+            </p>
+
+        </div>
+
+
+        <a
+            href="new-project.html"
+            class="new-project-btn"
+        >
+            + New project
+        </a>
+
+    </section>
+
+
+
+    <!-- ERROR -->
+
+    <div
+        class="error-message"
+        id="errorMessage"
+    ></div>
+
+
+
+    <!-- =====================================================
+         STATS
+    ====================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    Total projects
+                </span>
+
+                <div class="stat-icon">
+                    #
+                </div>
+
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalProjects"
+            >
+                0
+            </div>
+
+            <div class="stat-sub">
+                Projects in your workspace
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    Total area
+                </span>
+
+                <div class="stat-icon">
+                    □
+                </div>
+
+            </div>
+
+            <div
+                class="stat-value"
+                id="totalArea"
+            >
+                0
+            </div>
+
+            <div class="stat-sub">
+                sq.ft across projects
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    Avg. project size
+                </span>
+
+                <div class="stat-icon">
+                    ↗
+                </div>
+
+            </div>
+
+            <div
+                class="stat-value"
+                id="averageArea"
+            >
+                0
+            </div>
+
+            <div class="stat-sub">
+                Average built-up area
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span class="stat-label">
+                    Workspace
+                </span>
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+            </div>
+
+            <div
+                class="stat-value"
+                style="font-size:22px;"
+            >
+                Active
+            </div>
+
+            <div class="stat-sub">
+                Estimation engine ready
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUICK ACTION
+    ====================================================== -->
+
+    <section class="quick-card">
+
+        <div>
+
+            <h2>
+                Start a new construction estimate
+            </h2>
+
+            <p>
+                Enter your project details and generate
+                a preliminary cost and material estimate.
+            </p>
+
+        </div>
+
+
+        <a
+            href="new-project.html"
+            class="quick-button"
+        >
+            Create estimate →
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+
+    <section id="projects">
+
+
+        <div class="section-header">
+
+            <h2>
+                Your projects
+            </h2>
+
+            <span
+                class="project-count"
+                id="projectCount"
+            >
+                0 projects
+            </span>
+
+        </div>
+
+
+        <div class="project-toolbar">
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search projects by name, location or type..."
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROJECT LIST -->
+
+        <div
+            class="projects-container"
+            id="projectsContainer"
+        >
+
+            <div
+                class="loading"
+                id="loadingState"
+            >
+                Loading projects...
+            </div>
+
+        </div>
+
+
+
+        <!-- EMPTY STATE -->
+
+        <div
+            class="empty-state"
+            id="emptyState"
+        >
+
+            <div class="empty-icon">
+                +
+            </div>
+
+            <h3>
+                No projects yet
+            </h3>
+
+            <p>
+                Create your first construction project
+                to generate an estimate.
+            </p>
+
+            <a
+                href="new-project.html"
+                class="empty-button"
+            >
+                Create first project
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+</main>
+
+
+
+<script>
+
+    const API_BASE_URL =
+        "http://127.0.0.1:8000";
+
+
+    let allProjects = [];
+
+
+    /* =====================================================
+       TOKEN
+    ===================================================== */
+
+    function getToken() {
+
+        return (
+            localStorage.getItem("access_token") ||
+            localStorage.getItem("token")
+        );
+
+    }
+
+
+    /* =====================================================
+       FORMAT
+    ===================================================== */
+
+    function formatNumber(value) {
+
+        return new Intl.NumberFormat(
+            "en-IN"
+        ).format(value || 0);
+
+    }
+
+
+    function formatText(value) {
+
+        if (!value) {
+            return "—";
+        }
+
+        return String(value)
+            .replace(/[_-]/g, " ")
+            .replace(/\b\w/g, function(letter) {
+                return letter.toUpperCase();
+            });
+
+    }
+
+
+    /* =====================================================
+       LOAD USER
+    ===================================================== */
+
+    async function loadUser() {
+
+        const token =
+            getToken();
+
+        if (!token) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${API_BASE_URL}/api/auth/me`,
+                    {
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Session expired."
+                );
+
+            }
+
+
+            const user =
+                await response.json();
+
+
+            const fullName =
+                user.full_name ||
+                "User";
+
+
+            document.getElementById(
+                "welcomeName"
+            ).textContent =
+                fullName.split(" ")[0];
+
+
+            document.getElementById(
+                "userEmail"
+            ).textContent =
+                user.email || "";
+
+
+            document.getElementById(
+                "userAvatar"
+            ).textContent =
+                fullName
+                    .charAt(0)
+                    .toUpperCase();
+
+
+        } catch (error) {
+
+            localStorage.removeItem(
+                "access_token"
+            );
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LOAD PROJECTS
+    ===================================================== */
+
+    async function loadProjects() {
+
+        const token =
+            getToken();
+
+
+        if (!token) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${API_BASE_URL}/api/projects`,
+                    {
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                const errorData =
+                    await response.json()
+                    .catch(() => ({}));
+
+                throw new Error(
+                    errorData.detail ||
+                    "Unable to load projects."
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            allProjects =
+                data.projects || [];
+
+
+            updateStats(
+                allProjects
+            );
+
+
+            renderProjects(
+                allProjects
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showError(
+                error.message
+            );
+
+            document.getElementById(
+                "loadingState"
+            ).style.display =
+                "none";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       UPDATE STATS
+    ===================================================== */
+
+    function updateStats(projects) {
+
+        const total =
+            projects.length;
+
+
+        const totalArea =
+            projects.reduce(
+                function(sum, project) {
+
+                    return sum +
+                        Number(
+                            project.built_up_area ||
+                            0
+                        );
+
+                },
+                0
+            );
+
+
+        const averageArea =
+            total > 0
+                ? totalArea / total
+                : 0;
+
+
+        document.getElementById(
+            "totalProjects"
+        ).textContent =
+            formatNumber(total);
+
+
+        document.getElementById(
+            "totalArea"
+        ).textContent =
+            formatNumber(totalArea);
+
+
+        document.getElementById(
+            "averageArea"
+        ).textContent =
+            formatNumber(
+                Math.round(
+                    averageArea
+                )
+            );
+
+
+        document.getElementById(
+            "projectCount"
+        ).textContent =
+            `${total} ${
+                total === 1
+                    ? "project"
+                    : "projects"
+            }`;
+
+    }
+
+
+    /* =====================================================
+       RENDER PROJECTS
+    ===================================================== */
+
+    function renderProjects(projects) {
+
+        const container =
+            document.getElementById(
+                "projectsContainer"
+            );
+
+
+        const loading =
+            document.getElementById(
+                "loadingState"
+            );
+
+
+        const empty =
+            document.getElementById(
+                "emptyState"
+            );
+
+
+        loading.style.display =
+            "none";
+
+
+        container
+            .querySelectorAll(
+                ".project-row"
+            )
+            .forEach(
+                function(row) {
+                    row.remove();
+                }
+            );
+
+
+        if (!projects.length) {
+
+            empty.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        empty.style.display =
+            "none";
+
+
+        projects.forEach(
+            function(project) {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                row.className =
+                    "project-row";
+
+
+                const projectMain =
+                    document.createElement(
+                        "div"
+                    );
+
+                projectMain.className =
+                    "project-main";
+
+
+                const name =
+                    document.createElement(
+                        "div"
+                    );
+
+                name.className =
+                    "project-name";
+
+                name.textContent =
+                    project.project_name ||
+                    "Untitled Project";
+
+
+                const location =
+                    document.createElement(
+                        "div"
+                    );
+
+                location.className =
+                    "project-location";
+
+                location.textContent =
+                    `${project.location || "—"}${
+                        project.state
+                            ? ", " + project.state
+                            : ""
+                    }`;
+
+
+                projectMain.appendChild(
+                    name
+                );
+
+                projectMain.appendChild(
+                    location
+                );
+
+
+                /* AREA */
+
+                const area =
+                    createField(
+                        "AREA",
+                        `${formatNumber(
+                            project.built_up_area
+                        )} sq.ft`
+                    );
+
+
+                /* TYPE */
+
+                const type =
+                    createField(
+                        "TYPE",
+                        formatText(
+                            project.construction_type
+                        )
+                    );
+
+
+                /* QUALITY */
+
+                const quality =
+                    document.createElement(
+                        "div"
+                    );
+
+                quality.className =
+                    "project-field";
+
+
+                const qualityLabel =
+                    document.createElement(
+                        "span"
+                    );
+
+                qualityLabel.textContent =
+                    "QUALITY";
+
+
+                const qualityPill =
+                    document.createElement(
+                        "div"
+                    );
+
+                qualityPill.className =
+                    "quality-pill";
+
+                qualityPill.textContent =
+                    formatText(
+                        project.quality
+                    );
+
+
+                quality.appendChild(
+                    qualityLabel
+                );
+
+                quality.appendChild(
+                    qualityPill
+                );
+
+
+                /* ACTIONS */
+
+                const actions =
+                    document.createElement(
+                        "div"
+                    );
+
+                actions.className =
+                    "project-actions";
+
+
+                const view =
+                    document.createElement(
+                        "button"
+                    );
+
+                view.className =
+                    "view-btn";
+
+                view.textContent =
+                    "Estimate";
+
+
+                view.addEventListener(
+                    "click",
+                    function() {
+
+                        localStorage.setItem(
+                            "latest_project",
+                            JSON.stringify(
+                                project
+                            )
+                        );
+
+
+                        window.location.href =
+                            "estimation.html";
+
+                    }
+                );
+
+
+                const deleteButton =
+                    document.createElement(
+                        "button"
+                    );
+
+                deleteButton.className =
+                    "delete-btn";
+
+                deleteButton.textContent =
+                    "Delete";
+
+
+                deleteButton.addEventListener(
+                    "click",
+                    function() {
+
+                        deleteProject(
+                            project.id
+                        );
+
+                    }
+                );
+
+
+                actions.appendChild(
+                    view
+                );
+
+                actions.appendChild(
+                    deleteButton
+                );
+
+
+                row.appendChild(
+                    projectMain
+                );
+
+                row.appendChild(
+                    area
+                );
+
+                row.appendChild(
+                    type
+                );
+
+                row.appendChild(
+                    quality
+                );
+
+                row.appendChild(
+                    actions
+                );
+
+
+                container.appendChild(
+                    row
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CREATE FIELD
+    ===================================================== */
+
+    function createField(
+        label,
+        value
+    ) {
+
+        const field =
+            document.createElement(
+                "div"
+            );
+
+        field.className =
+            "project-field";
+
+
+        const labelElement =
+            document.createElement(
+                "span"
+            );
+
+        labelElement.textContent =
+            label;
+
+
+        const valueElement =
+            document.createElement(
+                "strong"
+            );
+
+        valueElement.textContent =
+            value;
+
+
+        field.appendChild(
+            labelElement
+        );
+
+        field.appendChild(
+            valueElement
+        );
+
+
+        return field;
+
+    }
+
+
+    /* =====================================================
+       DELETE PROJECT
+    ===================================================== */
+
+    async function deleteProject(
+        projectId
+    ) {
+
+        const confirmed =
+            confirm(
+                "Delete this project? This action cannot be undone."
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        const token =
+            getToken();
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${API_BASE_URL}/api/projects/${projectId}`,
+                    {
+                        method: "DELETE",
+
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                const errorData =
+                    await response.json()
+                    .catch(() => ({}));
+
+                throw new Error(
+                    errorData.detail ||
+                    "Unable to delete project."
+                );
+
+            }
+
+
+            allProjects =
+                allProjects.filter(
+                    function(project) {
+
+                        return project.id !==
+                            projectId;
+
+                    }
+                );
+
+
+            updateStats(
+                allProjects
+            );
+
+
+            renderProjects(
+                allProjects
+            );
+
+
+        } catch (error) {
+
+            showError(
+                error.message
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    document.getElementById(
+        "searchInput"
+    ).addEventListener(
+        "input",
+        function(event) {
+
+            const query =
+                event.target.value
+                    .toLowerCase()
+                    .trim();
+
+
+            if (!query) {
+
+                renderProjects(
+                    allProjects
+                );
+
+                return;
+
+            }
+
+
+            const filtered =
+                allProjects.filter(
+                    function(project) {
+
+                        const searchable =
+                            [
+                                project.project_name,
+                                project.location,
+                                project.state,
+                                project.construction_type,
+                                project.quality
+                            ]
+                            .join(" ")
+                            .toLowerCase();
+
+
+                        return searchable.includes(
+                            query
+                        );
+
+                    }
+                );
+
+
+            renderProjects(
+                filtered
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       LOGOUT
+    ===================================================== */
+
+    document.getElementById(
+        "logoutButton"
+    ).addEventListener(
+        "click",
+        function() {
+
+            localStorage.removeItem(
+                "access_token"
+            );
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            localStorage.removeItem(
+                "latest_project"
+            );
+
+            localStorage.removeItem(
+                "latest_estimation"
+            );
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+    /* =====================================================
+       ERROR
+    ===================================================== */
+
+    function showError(message) {
+
+        const box =
+            document.getElementById(
+                "errorMessage"
+            );
+
+
+        box.style.display =
+            "block";
+
+
+        box.textContent =
+            message;
+
+    }
+
+
+    /* =====================================================
+       START
+    ===================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        async function() {
+
+            await loadUser();
+
+            await loadProjects();
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

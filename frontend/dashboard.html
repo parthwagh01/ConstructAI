@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ConstructAI project intelligence dashboard."
+    >
+
+    <title>Dashboard — ConstructAI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="dashboard-sidebar">
+
+        <div class="sidebar-top">
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <div class="brand-mark">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="brand-text">
+
+                    <strong>Construct</strong><span>AI</span>
+
+                </div>
+
+            </a>
+
+
+            <div class="workspace-label">
+
+                <span>
+                    WORKSPACE
+                </span>
+
+                <strong>
+                    Construction Intelligence
+                </strong>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="dashboard.html"
+                    class="sidebar-link active"
+                >
+
+                    <span class="sidebar-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Overview
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="new-project.html"
+                    class="sidebar-link"
+                >
+
+                    <span class="sidebar-icon">
+                        +
+                    </span>
+
+                    <span>
+                        New project
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#projectsContainer"
+                    class="sidebar-link"
+                >
+
+                    <span class="sidebar-icon">
+                        □
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar-link disabled-link"
+                    onclick="return false;"
+                >
+
+                    <span class="sidebar-icon">
+                        ◫
+                    </span>
+
+                    <span>
+                        Reports
+                    </span>
+
+                    <small>
+                        Soon
+                    </small>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar-link disabled-link"
+                    onclick="return false;"
+                >
+
+                    <span class="sidebar-icon">
+                        ◌
+                    </span>
+
+                    <span>
+                        Analytics
+                    </span>
+
+                    <small>
+                        Soon
+                    </small>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        Estimation engine
+                    </strong>
+
+                    <small>
+                        Operational
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="sidebar-user"
+                data-logout
+            >
+
+                <div class="user-avatar">
+                    <span data-user-name>
+                        U
+                    </span>
+                </div>
+
+                <div class="user-info">
+
+                    <strong data-user-name>
+                        User
+                    </strong>
+
+                    <small data-user-email>
+                        Account
+                    </small>
+
+                </div>
+
+                <span class="logout-arrow">
+                    ↗
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="dashboard-topbar">
+
+            <div>
+
+                <span class="dashboard-kicker">
+                    PROJECT INTELLIGENCE
+                </span>
+
+                <h1>
+                    Good to see you,
+                    <span data-user-name>
+                        User
+                    </span>.
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="engine-status">
+
+                    <span class="status-dot"></span>
+
+                    Engine online
+
+                </div>
+
+
+                <a
+                    href="new-project.html"
+                    class="dashboard-create-btn"
+                >
+
+                    <span>+</span>
+
+                    New project
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             KPI CARDS
+        ========================== -->
+
+        <section class="dashboard-kpis">
+
+
+            <article class="kpi-card primary-kpi">
+
+                <div class="kpi-header">
+
+                    <span>
+                        PROJECTS
+                    </span>
+
+                    <div class="kpi-icon">
+                        P
+                    </div>
+
+                </div>
+
+
+                <strong
+                    id="totalProjects"
+                    class="kpi-value"
+                >
+                    0
+                </strong>
+
+
+                <div class="kpi-footer">
+
+                    <span>
+                        Total projects
+                    </span>
+
+                    <span class="kpi-indicator">
+                        Active workspace
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="kpi-card">
+
+                <div class="kpi-header">
+
+                    <span>
+                        ESTIMATION
+                    </span>
+
+                    <div class="kpi-icon">
+                        ₹
+                    </div>
+
+                </div>
+
+
+                <strong class="kpi-value">
+                    —
+                </strong>
+
+
+                <div class="kpi-footer">
+
+                    <span>
+                        Project value
+                    </span>
+
+                    <span>
+                        Awaiting data
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="kpi-card">
+
+                <div class="kpi-header">
+
+                    <span>
+                        MATERIALS
+                    </span>
+
+                    <div class="kpi-icon">
+                        M
+                    </div>
+
+                </div>
+
+
+                <strong class="kpi-value">
+                    —
+                </strong>
+
+
+                <div class="kpi-footer">
+
+                    <span>
+                        Material forecast
+                    </span>
+
+                    <span>
+                        Per project
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="kpi-card">
+
+                <div class="kpi-header">
+
+                    <span>
+                        PLATFORM
+                    </span>
+
+                    <div class="kpi-icon success-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+
+                <strong class="kpi-value small-kpi">
+                    Ready
+                </strong>
+
+
+                <div class="kpi-footer">
+
+                    <span>
+                        Estimation system
+                    </span>
+
+                    <span class="online-text">
+                        Online
+                    </span>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =========================
+             MAIN CONTENT GRID
+        ========================== -->
+
+        <section class="dashboard-content-grid">
+
+
+            <!-- PROJECTS -->
+
+            <div class="dashboard-projects-panel">
+
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-kicker">
+                            WORKSPACE
+                        </span>
+
+                        <h2>
+                            Your projects
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="new-project.html"
+                        class="panel-action"
+                    >
+
+                        Create project
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+                <div
+                    id="projectsContainer"
+                    class="projects-container"
+                >
+
+                    <div class="projects-loading">
+
+                        <div class="loading-spinner"></div>
+
+                        <span>
+                            Loading projects...
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT COLUMN -->
+
+            <aside class="dashboard-side-column">
+
+
+                <!-- QUICK ACTION -->
+
+                <div class="quick-action-card">
+
+                    <span class="panel-kicker">
+                        QUICK START
+                    </span>
+
+                    <h3>
+                        Start a new
+                        <span>estimate.</span>
+                    </h3>
+
+                    <p>
+                        Add your project requirements
+                        and generate a structured
+                        construction estimate.
+                    </p>
+
+
+                    <a
+                        href="new-project.html"
+                        class="quick-action-button"
+                    >
+
+                        Create estimate
+
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- SYSTEM CARD -->
+
+                <div class="system-card">
+
+                    <div class="system-card-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                SYSTEM
+                            </span>
+
+                            <h3>
+                                ConstructAI engine
+                            </h3>
+
+                        </div>
+
+                        <span class="system-live">
+                            LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="system-status-row">
+
+                        <span class="system-dot"></span>
+
+                        <div>
+
+                            <strong>
+                                Estimation engine
+                            </strong>
+
+                            <small>
+                                Operational
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-status-row">
+
+                        <span class="system-dot"></span>
+
+                        <div>
+
+                            <strong>
+                                Project database
+                            </strong>
+
+                            <small>
+                                Connected
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="system-status-row">
+
+                        <span class="system-dot"></span>
+
+                        <div>
+
+                            <strong>
+                                Authentication
+                            </strong>
+
+                            <small>
+                                Secured
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ROADMAP -->
+
+                <div class="roadmap-card">
+
+                    <div class="panel-kicker">
+                        PLATFORM ROADMAP
+                    </div>
+
+                    <h3>
+                        Intelligence layer
+                    </h3>
+
+                    <div class="roadmap-line">
+
+                        <div class="roadmap-progress"></div>
+
+                    </div>
+
+                    <div class="roadmap-items">
+
+                        <div class="roadmap-item done">
+
+                            <span></span>
+
+                            <div>
+
+                                <strong>
+                                    Cost estimation
+                                </strong>
+
+                                <small>
+                                    Available
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="roadmap-item done">
+
+                            <span></span>
+
+                            <div>
+
+                                <strong>
+                                    Material estimation
+                                </strong>
+
+                                <small>
+                                    Available
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="roadmap-item">
+
+                            <span></span>
+
+                            <div>
+
+                                <strong>
+                                    ML prediction model
+                                </strong>
+
+                                <small>
+                                    Next phase
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="roadmap-item">
+
+                            <span></span>
+
+                            <div>
+
+                                <strong>
+                                    Advanced analytics
+                                </strong>
+
+                                <small>
+                                    Planned
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         DASHBOARD CSS
+    ========================== -->
+
+    <style>
+
+        /* ==========================================
+           DASHBOARD BASE
+        ========================================== */
+
+        .dashboard-page {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 80% 10%,
+                    rgba(199,243,106,0.035),
+                    transparent 28%
+                ),
+                var(--bg);
+        }
+
+
+        .dashboard-sidebar {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            bottom: 0;
+
+            z-index: 50;
+
+            width: 255px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            padding: 27px 18px 20px;
+
+            border-right: 1px solid var(--border);
+
+            background:
+                rgba(8,10,9,0.94);
+
+            backdrop-filter: blur(20px);
+        }
+
+
+        .sidebar-top > .brand {
+            padding: 0 11px;
+        }
+
+
+        .workspace-label {
+            margin-top: 42px;
+
+            padding: 0 11px 14px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .workspace-label span {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #555d57;
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .workspace-label strong {
+            color: var(--text-soft);
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+
+        .sidebar-nav {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+            margin-top: 20px;
+        }
+
+
+        .sidebar-link {
+            position: relative;
+
+            min-height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 0 11px;
+
+            border-radius: 9px;
+
+            color: var(--text-muted);
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+
+        .sidebar-link:hover {
+            background:
+                rgba(255,255,255,0.035);
+
+            color: var(--text);
+        }
+
+
+        .sidebar-link.active {
+            background:
+                rgba(199,243,106,0.075);
+
+            color: var(--accent);
+        }
+
+
+        .sidebar-link.active::before {
+            content: "";
+
+            position: absolute;
+
+            left: -18px;
+
+            width: 2px;
+            height: 22px;
+
+            border-radius: 99px;
+
+            background: var(--accent);
+        }
+
+
+        .sidebar-icon {
+            width: 22px;
+
+            text-align: center;
+
+            color: currentColor;
+
+            font-size: 13px;
+        }
+
+
+        .disabled-link {
+            opacity: 0.55;
+
+            cursor: default;
+        }
+
+
+        .sidebar-link small {
+            margin-left: auto;
+
+            color: #555d57;
+
+            font-size: 7px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+
+        .sidebar-bottom {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .sidebar-status {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.018);
+        }
+
+
+        .status-dot,
+        .system-dot {
+            width: 7px;
+            height: 7px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: var(--accent);
+
+            box-shadow:
+                0 0 10px
+                rgba(199,243,106,0.45);
+        }
+
+
+        .sidebar-status div {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1px;
+        }
+
+
+        .sidebar-status strong {
+            font-size: 9px;
+        }
+
+
+        .sidebar-status small {
+            color: var(--text-muted);
+
+            font-size: 8px;
+        }
+
+
+        .sidebar-user {
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 8px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: transparent;
+
+            color: inherit;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease;
+        }
+
+
+        .sidebar-user:hover {
+            background:
+                rgba(255,255,255,0.035);
+        }
+
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+
+            display: grid;
+
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 9px;
+
+            background: var(--accent);
+
+            color: #11150d;
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+
+        .user-info {
+            min-width: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            flex: 1;
+        }
+
+
+        .user-info strong {
+            overflow: hidden;
+
+            color: var(--text-soft);
+
+            font-size: 10px;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        .user-info small {
+            overflow: hidden;
+
+            color: #555d57;
+
+            font-size: 8px;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        .logout-arrow {
+            color: #555d57;
+
+            font-size: 12px;
+        }
+
+
+        /* ==========================================
+           MAIN
+        ========================================== */
+
+        .dashboard-main {
+            min-height: 100vh;
+
+            margin-left: 255px;
+
+            padding: 46px 48px 60px;
+        }
+
+
+        .dashboard-topbar {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .dashboard-kicker,
+        .panel-kicker {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: var(--accent);
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.7px;
+        }
+
+
+        .dashboard-topbar h1 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 31px;
+
+            line-height: 1.1;
+
+            letter-spacing: -1.4px;
+        }
+
+
+        .dashboard-topbar h1 span {
+            color: var(--accent);
+        }
+
+
+        .topbar-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .engine-status {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: var(--text-muted);
+
+            font-size: 9px;
+        }
+
+
+        .dashboard-create-btn {
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 0 15px;
+
+            border-radius: 9px;
+
+            background: var(--accent);
+
+            color: #11150d;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .dashboard-create-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(199,243,106,0.12);
+        }
+
+
+        .dashboard-create-btn span {
+            font-size: 17px;
+        }
+
+
+        /* ==========================================
+           KPI
+        ========================================== */
+
+        .dashboard-kpis {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 13px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .kpi-card {
+            min-height: 155px;
+
+            padding: 20px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.018);
+        }
+
+
+        .primary-kpi {
+            border-color:
+                rgba(199,243,106,0.16);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(199,243,106,0.07),
+                    rgba(255,255,255,0.015)
+                );
+        }
+
+
+        .kpi-header,
+        .kpi-footer {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .kpi-header > span {
+            color: var(--text-muted);
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        .kpi-icon {
+            width: 28px;
+            height: 28px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: var(--text-muted);
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+
+        .success-icon {
+            color: var(--accent);
+
+            border-color:
+                rgba(199,243,106,0.15);
+
+            background:
+                rgba(199,243,106,0.05);
+        }
+
+
+        .kpi-value {
+            display: block;
+
+            margin-top: 20px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 30px;
+
+            letter-spacing: -1.5px;
+        }
+
+
+        .small-kpi {
+            font-size: 24px;
+        }
+
+
+        .kpi-footer {
+            margin-top: 10px;
+        }
+
+
+        .kpi-footer > span {
+            color: #555d57;
+
+            font-size: 8px;
+        }
+
+
+        .kpi-indicator,
+        .online-text {
+            color: var(--accent) !important;
+        }
+
+
+        /* ==========================================
+           CONTENT
+        ========================================== */
+
+        .dashboard-content-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.55fr)
+                minmax(290px, 0.65fr);
+
+            gap: 17px;
+        }
+
+
+        .dashboard-projects-panel {
+            min-height: 560px;
+
+            padding: 26px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 17px;
+
+            background:
+                rgba(255,255,255,0.015);
+        }
+
+
+        .panel-heading {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 21px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .panel-heading h2 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 20px;
+
+            letter-spacing: -0.8px;
+        }
+
+
+        .panel-action {
+            color: var(--accent);
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+
+        .panel-action span {
+            margin-left: 4px;
+
+            font-size: 13px;
+        }
+
+
+        .projects-container {
+            padding-top: 18px;
+        }
+
+
+        .projects-loading {
+            min-height: 350px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+            color: var(--text-muted);
+
+            font-size: 10px;
+        }
+
+
+        .loading-spinner {
+            width: 25px;
+            height: 25px;
+
+            border: 2px solid
+                rgba(255,255,255,0.08);
+
+            border-top-color:
+                var(--accent);
+
+            border-radius: 50%;
+
+            animation:
+                dashboardSpin 0.8s linear infinite;
+        }
+
+
+        @keyframes dashboardSpin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        .project-card {
+            padding: 19px;
+
+            margin-bottom: 10px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,0.018);
+
+            transition:
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .project-card:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(199,243,106,0.18);
+        }
+
+
+        .project-card-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .project-card-header h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 15px;
+
+            letter-spacing: -0.4px;
+        }
+
+
+        .project-status {
+            padding: 5px 8px;
+
+            border-radius: 5px;
+
+            background:
+                rgba(199,243,106,0.07);
+
+            color: var(--accent);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.8px;
+
+            text-transform: uppercase;
+        }
+
+
+        .project-card-details {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 16px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        .project-card-details p {
+            color: var(--text-muted);
+
+            font-size: 9px;
+        }
+
+
+        .project-card-details strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: #656e68;
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.7px;
+
+            text-transform: uppercase;
+        }
+
+
+        .project-card-actions {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 15px;
+        }
+
+
+        .project-card-actions .btn {
+            min-height: 32px;
+
+            padding: 0 11px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 8px;
+
+            font-weight: 700;
+        }
+
+
+        .project-card-actions .btn-primary {
+            background: var(--accent);
+
+            color: #11150d;
+
+            border-color: var(--accent);
+        }
+
+
+        .project-card-actions .btn-secondary {
+            background: transparent;
+
+            color: var(--text-muted);
+        }
+
+
+        .project-card-actions .btn-secondary:hover {
+            color: var(--text);
+
+            border-color:
+                var(--border-light);
+        }
+
+
+        .empty-state {
+            min-height: 350px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            padding: 40px;
+        }
+
+
+        .empty-icon {
+            width: 50px;
+            height: 50px;
+
+            display: grid;
+
+            place-items: center;
+
+            margin-bottom: 18px;
+
+            border: 1px solid
+                rgba(199,243,106,0.15);
+
+            border-radius: 14px;
+
+            background:
+                rgba(199,243,106,0.05);
+
+            color: var(--accent);
+
+            font-size: 22px;
+        }
+
+
+        .empty-state h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 17px;
+        }
+
+
+        .empty-state p {
+            max-width: 300px;
+
+            margin: 8px 0 20px;
+
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        .empty-state .btn {
+            padding: 11px 14px;
+
+            border-radius: 8px;
+
+            background: var(--accent);
+
+            color: #11150d;
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+
+        /* ==========================================
+           SIDE COLUMN
+        ========================================== */
+
+        .dashboard-side-column {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .quick-action-card {
+            padding: 25px;
+
+            border: 1px solid
+                rgba(199,243,106,0.15);
+
+            border-radius: 16px;
+
+            background:
+                radial-gradient(
+                    circle at 90% 0%,
+                    rgba(199,243,106,0.09),
+                    transparent 55%
+                ),
+                rgba(199,243,106,0.025);
+        }
+
+
+        .quick-action-card h3 {
+            max-width: 230px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 24px;
+
+            line-height: 1.08;
+
+            letter-spacing: -1px;
+        }
+
+
+        .quick-action-card h3 span {
+            color: var(--accent);
+        }
+
+
+        .quick-action-card p {
+            margin: 14px 0 20px;
+
+            color: var(--text-muted);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        .quick-action-button {
+            height: 40px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 0 13px;
+
+            border-radius: 8px;
+
+            background: var(--accent);
+
+            color: #11150d;
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+
+        .system-card,
+        .roadmap-card {
+            padding: 21px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,0.015);
+        }
+
+
+        .system-card-header {
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            padding-bottom: 17px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .system-card h3,
+        .roadmap-card h3 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 15px;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        .system-live {
+            padding: 4px 6px;
+
+            border-radius: 5px;
+
+            background:
+                rgba(199,243,106,0.07);
+
+            color: var(--accent);
+
+            font-size: 6px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .system-status-row {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+
+        .system-status-row:last-child {
+            border-bottom: 0;
+
+            padding-bottom: 0;
+        }
+
+
+        .system-status-row div {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+        }
+
+
+        .system-status-row strong {
+            color: var(--text-soft);
+
+            font-size: 9px;
+        }
+
+
+        .system-status-row small {
+            color: #555d57;
+
+            font-size: 8px;
+        }
+
+
+        .roadmap-card {
+            flex: 1;
+        }
+
+
+        .roadmap-line {
+            height: 4px;
+
+            margin: 19px 0 17px;
+
+            overflow: hidden;
+
+            border-radius: 99px;
+
+            background:
+                rgba(255,255,255,0.05);
+        }
+
+
+        .roadmap-progress {
+            width: 50%;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: var(--accent);
+        }
+
+
+        .roadmap-items {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        .roadmap-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .roadmap-item > span {
+            width: 8px;
+            height: 8px;
+
+            flex-shrink: 0;
+
+            border: 1px solid #4b534d;
+
+            border-radius: 50%;
+        }
+
+
+        .roadmap-item.done > span {
+            border-color: var(--accent);
+
+            background: var(--accent);
+
+            box-shadow:
+                0 0 8px
+                rgba(199,243,106,0.3);
+        }
+
+
+        .roadmap-item div {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 1px;
+        }
+
+
+        .roadmap-item strong {
+            color: var(--text-soft);
+
+            font-size: 9px;
+        }
+
+
+        .roadmap-item small {
+            color: #555d57;
+
+            font-size: 7px;
+        }
+
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 1150px) {
+
+            .dashboard-sidebar {
+                width: 220px;
+            }
+
+            .dashboard-main {
+                margin-left: 220px;
+
+                padding-inline: 30px;
+            }
+
+            .dashboard-content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-side-column {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .dashboard-sidebar {
+                position: relative;
+
+                width: 100%;
+                height: auto;
+
+                padding: 17px;
+
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .workspace-label,
+            .sidebar-nav,
+            .sidebar-status {
+                display: none;
+            }
+
+            .sidebar-top > .brand {
+                padding: 0;
+            }
+
+            .sidebar-bottom {
+                position: absolute;
+
+                right: 17px;
+                top: 13px;
+
+                width: auto;
+            }
+
+            .sidebar-user {
+                width: auto;
+            }
+
+            .user-info,
+            .logout-arrow {
+                display: none;
+            }
+
+            .dashboard-main {
+                margin-left: 0;
+
+                padding: 30px 20px 50px;
+            }
+
+            .dashboard-kpis {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .dashboard-side-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .dashboard-topbar {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .dashboard-topbar h1 {
+                font-size: 27px;
+            }
+
+            .topbar-actions {
+                width: 100%;
+
+                justify-content: space-between;
+            }
+
+            .dashboard-kpis {
+                grid-template-columns: 1fr 1fr;
+
+                gap: 8px;
+            }
+
+            .kpi-card {
+                min-height: 135px;
+
+                padding: 15px;
+            }
+
+            .kpi-value {
+                font-size: 25px;
+            }
+
+            .dashboard-projects-panel {
+                padding: 18px;
+            }
+
+            .panel-heading {
+                align-items: flex-start;
+            }
+
+            .project-card-details {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .project-card-actions {
+                flex-wrap: wrap;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .dashboard-kpis {
+                grid-template-columns: 1fr;
+            }
+
+            .engine-status {
+                display: none;
+            }
+
+            .topbar-actions {
+                justify-content: flex-end;
+            }
+
+            .project-card-details {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+    </style>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

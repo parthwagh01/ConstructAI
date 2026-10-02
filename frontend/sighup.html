@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Create your ConstructAI account."
+    >
+
+    <title>Create Account — ConstructAI</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                "DM Sans",
+                Arial,
+                sans-serif;
+
+            background:
+                #070a08;
+
+            color:
+                #f4f7f3;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .signup-page {
+
+            min-height: 100vh;
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr 0.95fr;
+
+            background:
+                radial-gradient(
+                    circle at 18% 25%,
+                    rgba(191, 255, 74, 0.09),
+                    transparent 35%
+                ),
+                #070a08;
+        }
+
+
+        /* =====================================================
+           LEFT SIDE
+        ===================================================== */
+
+        .signup-left {
+
+            min-height: 100vh;
+
+            padding:
+                42px 7vw 42px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            border-right:
+                1px solid rgba(255,255,255,0.07);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .signup-left::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            left: -220px;
+            top: 35%;
+
+            border-radius: 50%;
+
+            background:
+                rgba(191,255,74,0.05);
+
+            filter:
+                blur(40px);
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            width: fit-content;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .brand-mark {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 11px;
+
+            background:
+                #c6ff4a;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            gap: 3px;
+
+            padding: 9px 8px;
+
+            box-shadow:
+                0 0 30px
+                rgba(198,255,74,0.15);
+        }
+
+
+        .brand-mark span {
+
+            width: 5px;
+
+            background:
+                #071006;
+
+            border-radius: 3px 3px 1px 1px;
+        }
+
+
+        .brand-mark span:nth-child(1) {
+            height: 10px;
+        }
+
+
+        .brand-mark span:nth-child(2) {
+            height: 17px;
+        }
+
+
+        .brand-mark span:nth-child(3) {
+            height: 23px;
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 2px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size: 21px;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        .brand-text strong {
+            font-weight: 800;
+        }
+
+
+        .brand-text span {
+
+            color:
+                #c6ff4a;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           LEFT CONTENT
+        ===================================================== */
+
+        .left-content {
+
+            max-width: 610px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 24px;
+
+            color:
+                #9da79b;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .eyebrow-dot {
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background:
+                #c6ff4a;
+
+            box-shadow:
+                0 0 15px
+                rgba(198,255,74,0.55);
+        }
+
+
+        .left-content h1 {
+
+            max-width: 620px;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(42px, 5vw, 72px);
+
+            line-height:
+                1.02;
+
+            letter-spacing:
+                -3px;
+
+            margin-bottom: 26px;
+        }
+
+
+        .left-content h1 span {
+            color:
+                #c6ff4a;
+        }
+
+
+        .left-description {
+
+            max-width: 560px;
+
+            color:
+                #aeb7ac;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+
+            margin-bottom: 42px;
+        }
+
+
+        /* =====================================================
+           BENEFITS
+        ===================================================== */
+
+        .benefits {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+            max-width: 700px;
+        }
+
+
+        .benefit {
+
+            min-height: 135px;
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+
+        .benefit:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(198,255,74,0.3);
+        }
+
+
+        .benefit-number {
+
+            color:
+                #c6ff4a;
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .benefit h3 {
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size: 15px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .benefit p {
+
+            color:
+                #899389;
+
+            font-size: 12px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           LEFT FOOTER
+        ===================================================== */
+
+        .left-footer {
+
+            color:
+                #697269;
+
+            font-size: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .left-footer-dot {
+
+            width: 8px;
+            height: 8px;
+
+            background:
+                #c6ff4a;
+
+            border-radius: 50%;
+        }
+
+
+        /* =====================================================
+           RIGHT SIDE
+        ===================================================== */
+
+        .signup-right {
+
+            min-height: 100vh;
+
+            padding:
+                30px 6vw;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* =====================================================
+           TOP RIGHT
+        ===================================================== */
+
+        .top-right {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            align-items: center;
+
+            gap: 18px;
+
+            color:
+                #8d978c;
+
+            font-size: 14px;
+
+            margin-bottom: 50px;
+        }
+
+
+        .signin-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                13px 19px;
+
+            border-radius: 11px;
+
+            background:
+                #c6ff4a;
+
+            color:
+                #071006;
+
+            font-weight: 800;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .signin-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(198,255,74,0.15);
+        }
+
+
+        /* =====================================================
+           FORM WRAPPER
+        ===================================================== */
+
+        .form-wrapper {
+
+            width: 100%;
+
+            max-width: 540px;
+
+            margin:
+                auto;
+        }
+
+
+        .form-kicker {
+
+            color:
+                #c6ff4a;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 13px;
+        }
+
+
+        .form-wrapper h2 {
+
+            font-family:
+                "Manrope",
+                sans-serif;
+
+            font-size:
+                clamp(36px, 4vw, 50px);
+
+            line-height: 1.05;
+
+            letter-spacing:
+                -2px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .form-subtitle {
+
+            color:
+                #899389;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            margin-bottom: 34px;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .signup-form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+        }
+
+
+        .field {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .field label {
+
+            color:
+                #dce2da;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .field input {
+
+            width: 100%;
+
+            height: 54px;
+
+            padding:
+                0 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            color:
+                #ffffff;
+
+            font-size: 14px;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .field input::placeholder {
+            color:
+                #697269;
+        }
+
+
+        .field input:focus {
+
+            border-color:
+                #c6ff4a;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(198,255,74,0.08);
+        }
+
+
+        /* =====================================================
+           PASSWORD ROW
+        ===================================================== */
+
+        .password-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 14px;
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        #signupMessage {
+
+            min-height: 20px;
+
+            color:
+                #c6ff4a;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           CREATE BUTTON
+        ===================================================== */
+
+        .create-button {
+
+            width: 100%;
+
+            height: 56px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                #c6ff4a;
+
+            color:
+                #071006;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                opacity .2s ease;
+        }
+
+
+        .create-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 16px 35px
+                rgba(198,255,74,0.16);
+        }
+
+
+        .create-button:active {
+            transform:
+                translateY(0);
+        }
+
+
+        .create-button:disabled {
+
+            cursor:
+                not-allowed;
+
+            opacity:
+                0.6;
+        }
+
+
+        /* =====================================================
+           SECURITY NOTE
+        ===================================================== */
+
+        .security-note {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 18px;
+
+            padding:
+                13px 14px;
+
+            border:
+                1px solid
+                rgba(198,255,74,0.10);
+
+            border-radius: 10px;
+
+            background:
+                rgba(198,255,74,0.035);
+
+            color:
+                #788276;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        .security-icon {
+
+            width: 22px;
+            height: 22px;
+
+            flex: 0 0 22px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                rgba(198,255,74,0.13);
+
+            color:
+                #c6ff4a;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           BOTTOM
+        ===================================================== */
+
+        .form-bottom {
+
+            margin-top: 22px;
+
+            text-align: center;
+
+            color:
+                #697269;
+
+            font-size: 13px;
+        }
+
+
+        .form-bottom a {
+
+            color:
+                #c6ff4a;
+
+            font-weight: 700;
+        }
+
+
+        .legal {
+
+            margin-top: 25px;
+
+            color:
+                #5e675e;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .signup-page {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .signup-left {
+
+                min-height:
+                    auto;
+
+                padding:
+                    35px 7vw;
+            }
+
+
+            .left-content {
+
+                margin:
+                    70px 0;
+            }
+
+
+            .signup-right {
+
+                min-height:
+                    auto;
+
+                padding:
+                    35px 7vw 60px;
+            }
+
+
+            .form-wrapper {
+
+                margin:
+                    0 auto;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .signup-left {
+
+                padding:
+                    28px 22px;
+            }
+
+
+            .signup-right {
+
+                padding:
+                    25px 22px 50px;
+            }
+
+
+            .top-right {
+
+                margin-bottom:
+                    35px;
+
+                font-size:
+                    12px;
+            }
+
+
+            .signin-button {
+
+                padding:
+                    11px 14px;
+            }
+
+
+            .left-content {
+
+                margin:
+                    60px 0;
+            }
+
+
+            .left-content h1 {
+
+                font-size:
+                    43px;
+
+                letter-spacing:
+                    -2px;
+            }
+
+
+            .left-description {
+
+                font-size:
+                    14px;
+            }
+
+
+            .benefits {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .benefit {
+
+                min-height:
+                    auto;
+            }
+
+
+            .password-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .form-wrapper h2 {
+
+                font-size:
+                    38px;
+            }
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="signup-page">
+
+
+        <!-- =================================================
+             LEFT PANEL
+        ================================================== -->
+
+        <section class="signup-left">
+
+
+            <!-- BRAND -->
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <div class="brand-mark">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <strong>
+                        Construct
+                    </strong>
+
+                    <span>
+                        AI
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- CONTENT -->
+
+            <div class="left-content">
+
+
+                <div class="eyebrow">
+
+                    <span class="eyebrow-dot"></span>
+
+                    Construction intelligence platform
+
+                </div>
+
+
+                <h1>
+
+                    Build smarter.
+                    <span>
+                        Estimate better.
+                    </span>
+
+                </h1>
+
+
+                <p class="left-description">
+
+                    Create your ConstructAI workspace to
+                    manage construction projects, generate
+                    cost estimates and organize your project
+                    information in one place.
+
+                </p>
+
+
+
+                <div class="benefits">
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Create projects
+                        </h3>
+
+                        <p>
+                            Store project details and
+                            construction requirements.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Estimate costs
+                        </h3>
+
+                        <p>
+                            Generate structured cost
+                            and material estimates.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Analyze projects
+                        </h3>
+
+                        <p>
+                            Keep project information
+                            accessible from your workspace.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="left-footer">
+
+                <span class="left-footer-dot"></span>
+
+                Free workspace · No credit card required
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RIGHT PANEL
+        ================================================== -->
+
+        <section class="signup-right">
+
+
+            <!-- TOP -->
+
+            <div class="top-right">
+
+                <span>
+                    Already have an account?
+                </span>
+
+
+                <a
+                    href="login.html"
+                    class="signin-button"
+                >
+
+                    Sign in
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- FORM -->
+
+            <div class="form-wrapper">
+
+
+                <div class="form-kicker">
+                    GET STARTED
+                </div>
+
+
+                <h2>
+                    Create account
+                </h2>
+
+
+                <p class="form-subtitle">
+
+                    Set up your workspace in less than
+                    a minute.
+
+                </p>
+
+
+
+                <form
+                    id="signupForm"
+                    class="signup-form"
+                >
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="field">
+
+                        <label for="fullName">
+                            Full name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="full_name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="field">
+
+                        <label for="email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- PASSWORDS -->
+
+                    <div class="password-grid">
+
+
+                        <div class="field">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Minimum 6 characters"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="field">
+
+                            <label for="confirmPassword">
+                                Confirm password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirm_password"
+                                placeholder="Re-enter password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="signupMessage"
+                        aria-live="polite"
+                    ></div>
+
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="create-button"
+                    >
+
+                        Create account
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- SECURITY -->
+
+                <div class="security-note">
+
+                    <span class="security-icon">
+                        ✓
+                    </span>
+
+                    <span>
+                        Your account information is used
+                        to manage your ConstructAI workspace
+                        and projects.
+                    </span>
+
+                </div>
+
+
+
+                <!-- SIGN IN -->
+
+                <div class="form-bottom">
+
+                    Already registered?
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </div>
+
+
+
+                <p class="legal">
+
+                    By creating an account, you agree to use
+                    ConstructAI for legitimate project planning
+                    and estimation purposes.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         APP JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/app.js"></script>
+
+
+</body>
+
+</html>
